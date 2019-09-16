@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using PeterRapier.Models;
 
 namespace PeterRapier.Pages
 {
@@ -12,12 +14,19 @@ namespace PeterRapier.Pages
     {
         public string Text { get; set; }
         public string databaseText { get; set; }
+        
+        public string EmployeeList { get; set; }
+
+        private readonly PeterRapier.Models.ApplicationDbContext _context;
 
         public void OnGet()
         {
             Text = "hello peter";
 
-            string connString = "Server=LAPTOP-J62LRQIM;Initial Catalog=RenRapier;Integrated Security=True";
+            string connString = "Server=DESKTOP-KBC6VID;Initial Catalog=Test;Integrated Security=True";
+            //string connString = "Server=LAPTOP-J62LRQIM;Initial Catalog=RenRapier;Integrated Security=True";
+
+            //EmployeeList = _context.Employees.FirstOrDefaultAsync(m => m.EmployeeID);
 
             try
             {
